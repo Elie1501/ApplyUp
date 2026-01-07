@@ -4,6 +4,7 @@ import { ApplyForm } from "./components/ApplyForm";
 
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import { AppliancesProvider } from "./contexts/AppliancesContext";
+import { ApplianceDetails } from "./components/ApplianceDetails";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ApplyForm />} />
           <Route path="/list" element={<AppliancesList />} />
+          <Route path="/details/:id" element={<ApplianceDetails />} />
+          {/* Syntax with search params instead of path params <Route path="/details" element={<ApplianceDetails />} /> */}
         </Routes>
       </Router>
     </AppliancesProvider>
