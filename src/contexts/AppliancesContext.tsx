@@ -8,7 +8,7 @@ export type Appliance = {
     description: string
 }
 
-export type AppliancesContextType = {
+type AppliancesContextType = {
     appliances: Appliance[]
     addAppliance: (appliance: Appliance) => void
     removeAppliance: (id: string) => void

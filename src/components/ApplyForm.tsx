@@ -1,9 +1,6 @@
-import { useContext, useState } from "react";
+import { PropsWithChildren, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  AppliancesContext,
-  useAppliances,
-} from "../contexts/AppliancesContext";
+import { useAppliances } from "../contexts/AppliancesContext";
 
 type Job = {
   id: "front" | "back";
@@ -40,17 +37,19 @@ export const ApplyForm = () => {
         }}
         className="flex flex-col gap-4"
       >
-        <input
-          name="name"
-          required
-          type="text"
-          placeholder="Votre nom"
-          className="input"
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-          }}
-        />
+        <Row label="Nom">
+          <input
+            name="name"
+            required
+            type="text"
+            placeholder="Votre nom"
+            className="input"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </Row>
         {!name && <p className="text-red-500">Le nom est requis</p>}
         <input
           name="email"
@@ -80,6 +79,19 @@ export const ApplyForm = () => {
           Envoyer
         </button>
       </form>
+    </div>
+  );
+};
+
+type RowProps = {
+  label: string;
+};
+
+const Row = ({ label, children }: PropsWithChildren<RowProps>) => {
+  return (
+    <div className="flex flex-row gap-4">
+      <span>{label}</span>
+      {children}
     </div>
   );
 };
